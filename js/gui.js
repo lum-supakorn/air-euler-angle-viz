@@ -8,6 +8,9 @@ var options = {
             this.y = 0;
             this.z = 0;
         },
+        u: 0,
+        v: 0,
+        w: 0,
     },
     angular: {
         phi: 0,
@@ -47,7 +50,7 @@ linearProp.add(options.linear, 'x', -50, 50).name('\\(x\\)');
 linearProp.add(options.linear, 'y', -50, 50).name('\\(y\\)');
 linearProp.add(options.linear, 'z', -50, 50).name('\\(z\\)');
 linearProp.add(
-    { setPos:function(){ planePivot.position.set(
+    { setPos:function(){ plane.position.set(
         options.linear.x,
         options.linear.y,
         options.linear.z,
@@ -55,13 +58,16 @@ linearProp.add(
     'setPos'
 ).name('Set position');
 linearProp.add(
-    { resetPos:function(){ planePivot.position.set(
+    { resetPos:function(){ plane.position.set(
         0,
         0,
         0,
     )}},
     'resetPos'
 ).name('Reset position');
+linearProp.add(options.linear, 'u', -50, 50).name('\\(u\\)');
+linearProp.add(options.linear, 'v', -50, 50).name('\\(v\\)');
+linearProp.add(options.linear, 'w', -50, 50).name('\\(w\\)');
 linearProp.open();
 
 // Angular properties

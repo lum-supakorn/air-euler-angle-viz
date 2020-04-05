@@ -9,7 +9,10 @@ function animate() {
     if (plane) {
         delta = clock.getDelta();
         // Linear
-
+        // Velocity
+        plane.position.x += options.linear.u * delta;
+        plane.position.y += options.linear.v * delta;
+        plane.position.z += options.linear.w * delta;
 
         // Angular
         // Attitude rates

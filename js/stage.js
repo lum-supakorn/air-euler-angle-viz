@@ -24,13 +24,41 @@ plane_pivot = new THREE.Group();
 origin_pt.add(plane_pivot)
 
 // Plane
-var loader = new THREE.GLTFLoader();
+// var loader = new THREE.GLTFLoader();
+// var model;
+// loader.load( 'model/plane.gltf', function ( gltf ) {
+//     model = gltf.scene;
+//     model.rotation.x = -Math.PI/2; // Reset model
+//     // model.rotation.z = Math.PI; // Reset model
+//     plane_pivot.add( model );
+// }, undefined, function ( error ) {
+//     console.error( error );
+// } );
+
+// Plane
+var onProgress = function ( xhr ) {
+    if ( xhr.lengthComputable ) {
+        var percentComplete = xhr.loaded / xhr.total * 100;
+        console.log( Math.round( percentComplete, 2 ) + '% downloaded' );
+    }
+};
+
+var onError = function () { };
+
+var manager = new THREE.LoadingManager();
+manager.addHandler( /\.dds$/i, new THREE.DDSLoader() );
+
 var model;
-loader.load( 'model/plane.gltf', function ( gltf ) {
-    model = gltf.scene;
-    model.rotation.x = -Math.PI/2; // Reset model
-    // model.rotation.z = Math.PI; // Reset model
-    plane_pivot.add( model );
-}, undefined, function ( error ) {
-    console.error( error );
+
+new THREE.MTLLoader( manager )
+    .setPath( '../model/' )
+    .load( '14081_WWII_Plane-Germany_Focke-Wulf_FW_190_v1_l3.mtl', function ( materials ) {
+    materials.preload();
+    new THREE.OBJLoader( manager )
+        .setMaterials( materials )
+        .setPath( '../model/' )
+        .load( '14081_WWII_Plane-Germany_Focke-Wulf_FW_190_v1_l3.obj', function ( model ) {
+            model.rotation.x = Math.PI;
+            scene.add( model );
+        }, onProgress, onError );
 } );

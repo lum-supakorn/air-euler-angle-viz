@@ -39,6 +39,7 @@ new THREE.MTLLoader( manager )
         .load( '14081_WWII_Plane-Germany_Focke-Wulf_FW_190_v1_l3.obj', function ( model ) {
             plane = model;
             model.rotation.x = Math.PI;
+            model.rotation.z = Math.PI;
             scene.add( model );
         }, onProgress, onError );
 } );

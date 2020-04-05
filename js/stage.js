@@ -41,5 +41,18 @@ new THREE.MTLLoader( manager )
             model.rotation.x = Math.PI;
             model.rotation.z = Math.PI;
             planePivot.add( model );
+
+            // Add body-fixed axes
+            var dirX = new THREE.Vector3( -1, 0, 0 );
+            var dirY = new THREE.Vector3( 0, 1, 0 );
+            var dirZ = new THREE.Vector3( 0, 0, -1 );
+            var origin = new THREE.Vector3( 0, 0, 0 );
+            var length = 5;
+            var bodyAxisX = new THREE.ArrowHelper( dirX, origin, length, 0xFF0000 );
+            var bodyAxisY = new THREE.ArrowHelper( dirY, origin, length, 0x00FF00 );
+            var bodyAxisZ = new THREE.ArrowHelper( dirZ, origin, length, 0x0000FF );
+            model.add( bodyAxisX );
+            model.add( bodyAxisY );
+            model.add( bodyAxisZ );
         }, onProgress, onError );
 } );

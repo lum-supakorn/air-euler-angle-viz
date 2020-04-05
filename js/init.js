@@ -2,7 +2,7 @@
 var scene = new THREE.Scene();
 THREE.Object3D.DefaultUp.set(0, 0, -1); // Change default coordinate frame to NED
 var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
-camera.position.set( -5, 10, -5 );
+camera.position.set( 10, 10, -10 );
 
 // Set up renderer
 var renderer = new THREE.WebGLRenderer();

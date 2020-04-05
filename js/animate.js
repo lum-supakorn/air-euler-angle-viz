@@ -12,13 +12,14 @@ function animate() {
 
         // Angular
         // Attitude rates
-        planePivot.rotation.x += deg2rad(options.angular.phid);
-        planePivot.rotation.y += deg2rad(options.angular.thetad);
-        planePivot.rotation.z += deg2rad(options.angular.psid);
+        planePivot.rotateOnWorldAxis(dirX, deg2rad(options.angular.phid));
+        planePivot.rotateOnWorldAxis(dirY, deg2rad(options.angular.thetad));
+        planePivot.rotateOnWorldAxis(dirZ, deg2rad(options.angular.psid));
         // Body rates
         plane.rotation.x += deg2rad(options.angular.p);
         plane.rotation.y += -deg2rad(options.angular.q);
         plane.rotation.z += -deg2rad(options.angular.r);
     }
 }
+
 animate();

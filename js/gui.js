@@ -55,12 +55,18 @@ var angularProp = gui.addFolder('Angular');
 angularProp.add(options.angular, 'phi', -180, 180, 0.5).name('\\(\\phi\\) {deg}');
 angularProp.add(options.angular, 'theta', -180, 180, 0.5).name('\\(\\theta\\) {deg}');
 angularProp.add(options.angular, 'psi', -180, 180, 0.5).name('\\(\\psi\\) {deg}');
-var obj = { add:function(){ planePivot.rotation.set(
+var obj = { setAtt:function(){ planePivot.rotation.set(
     deg2rad(options.angular.phi),
     deg2rad(options.angular.theta),
     deg2rad(options.angular.psi),
 )}};
-angularProp.add(obj, 'add').name('Set attitude');
+angularProp.add(obj, 'setAtt').name('Set attitude');
+var obj = { resetAtt:function(){ planePivot.rotation.set(
+    0,
+    0,
+    0,
+)}};
+angularProp.add(obj, 'resetAtt').name('Reset attitude');
 // Angular velocity
 angularProp.add(options.angular, 'phid', -90, 90, 0.5).name('\\(\\dot{\\phi}\\) {deg/s}');
 angularProp.add(options.angular, 'thetad', -90, 90, 0.5).name('\\(\\dot{\\theta}\\) {deg/s}');

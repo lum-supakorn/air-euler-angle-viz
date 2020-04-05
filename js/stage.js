@@ -14,7 +14,7 @@ scene.add( directionalLight2 );
 scene.add( ambientLight );
 
 // Origin point
-var geometry = new THREE.SphereBufferGeometry( 0.5, 32, 32 );
+var geometry = new THREE.SphereBufferGeometry( 0.2, 32, 32 );
 var material = new THREE.MeshBasicMaterial({ color: 0xFFFFFF });
 var origin_pt = new THREE.Mesh( geometry, material );
 scene.add( origin_pt );

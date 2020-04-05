@@ -3,41 +3,8 @@
 	<head>
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet"> 
 		<meta charset="utf-8">
-		<title>Flight Dynamics Visualizer</title>
-		<style>
-			body { margin: 0; }
-			canvas { display: block; }
-            #control { position: absolute; color: white; padding-left: 20px; padding-top: 20px;}
-            .parameter {
-                font-size: 15pt;
-                height: 40px;
-            }
-
-            input[type="range"] {
-                margin-left: 30px;
-                width: 250px;
-                position: absolute;
-            }
-
-            .parameter output {
-                font-size: 12pt;
-                position: absolute;
-                left: 350px;
-                width: 50px;
-                text-align: center;
-                color: white;
-                background-color: rgba(255, 255, 255, 0.3);
-                border-radius: 3px;
-                font-family: 'Roboto Mono', monospace;
-            }
-            .group {
-                color: white;
-                font-size: 11pt;
-                font-family: 'Roboto Mono', monospace;
-                margin-bottom: 10px;
-                margin-top: 10px;
-            }
-		</style>
+        <title>Flight Dynamics Visualizer</title>
+        <link rel="stylesheet" href="style.css">
 	</head>
 	<body>
         <div id="control">
@@ -114,123 +81,10 @@
         <script src="js/three.js"></script>
         <script src="js/GLTFLoader.js"></script>
         <script src="js/OrbitControls.js"></script>
-		<script>
-            // WARNING:
-            // Y IS SWAPPED WITH Z TO COMPLY WITH FLIGHT DYNAMICS COORDINATE CONVENTION (N-E-D)
 
-            // Set up scence and camera
-			var scene = new THREE.Scene();
-            var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
-            camera.position.set( -20, 25, -20 );
-
-            // Set up renderer
-            var renderer = new THREE.WebGLRenderer();
-            renderer.setSize( window.innerWidth, window.innerHeight );
-            document.body.appendChild( renderer.domElement );
-
-            // OrbitControls
-            var controls = new THREE.OrbitControls( camera, renderer.domElement );
-            controls.update();
-
-            // Position and angle controls
-            x_pos_slider = document.getElementById("x_pos");
-            y_pos_slider = document.getElementById("y_pos");
-            z_pos_slider = document.getElementById("z_pos");
-            // phi_slider = document.getElementById("phi");
-            // theta_slider = document.getElementById("theta");
-            // psi_slider = document.getElementById("psi");
-            phi_d_slider = document.getElementById("phi_d");
-            theta_d_slider = document.getElementById("theta_d");
-            psi_d_slider = document.getElementById("psi_d");
-            p_slider = document.getElementById("p");
-            q_slider = document.getElementById("q");
-            r_slider = document.getElementById("r");
-
-            // Light
-            var light = new THREE.AmbientLight( 0xFFFFFF ); // soft white light
-            scene.add( light );
-
-            let ambientLight = new THREE.AmbientLight( 0x404040 );
-            let directionalLight1 = new THREE.DirectionalLight( 0xC0C090 );
-            let directionalLight2 = new THREE.DirectionalLight( 0xC0C090 );
-
-            directionalLight1.position.set( -100, -50, 100 );
-            directionalLight2.position.set( 100, 50, -100 );
-
-            scene.add( directionalLight1 );
-            scene.add( directionalLight2 );
-            scene.add( ambientLight );
-
-            // Grid
-            let helper = new THREE.GridHelper( 1200, 60, 0, 0x404040 );
-            scene.add( helper );
-
-            // Arrows
-            var x_dir = new THREE.Vector3( 10, 0, 0 );
-            var y_dir = new THREE.Vector3( 0, 0, 10 );
-            var z_dir = new THREE.Vector3( 0, -10, 0 );
-            
-            var origin = new THREE.Vector3( 0, 0, 0 );
-            var length = 15;
-            var x_arrow = new THREE.ArrowHelper( x_dir, origin, length, 0xFF0000 );
-            var y_arrow = new THREE.ArrowHelper( y_dir, origin, length, 0x00FF00 );
-            var z_arrow = new THREE.ArrowHelper( z_dir, origin, length, 0x0000FF );
-            scene.add( x_arrow, y_arrow, z_arrow );
-
-            var geometry = new THREE.SphereBufferGeometry( 0.5, 32, 32 );
-            var material = new THREE.MeshBasicMaterial({ color: 0xFFFFFF });
-
-            var og = new THREE.Mesh( geometry, material );
-            scene.add( og );
-
-            plane_pivot = new THREE.Group();
-            og.add(plane_pivot)
-
-            // Plane
-            var loader = new THREE.GLTFLoader();
-            var model;
-            loader.load( 'model/plane.gltf', function ( gltf ) {
-                model = gltf.scene;
-                model.rotation.y = Math.PI; // Reset model
-                plane_pivot.add( model );
-            }, undefined, function ( error ) {
-                console.error( error );
-            } );
-
-            // Angle converter
-            function deg2rad(degrees) {
-                var pi = Math.PI;
-                return degrees * (pi/180);
-            }
-
-            // Render the scene
-            function animate() {
-                requestAnimationFrame( animate );
-                renderer.render( scene, camera );
-                controls.update();
-
-                // Rotate cube
-                if (model) {
-                    // Position control
-                    model.position.x = x_pos_slider.value;
-                    model.position.z = y_pos_slider.value;
-                    model.position.y = -z_pos_slider.value;
-                    // Angle control
-                    // plane_pivot.rotation.x = deg2rad(phi_slider.value);
-                    // plane_pivot.rotation.z = deg2rad(theta_slider.value);
-                    // plane_pivot.rotation.y = deg2rad(psi_slider.value);
-                    // Body angular rate control
-                    model.rotation.x += deg2rad(p_slider.value);
-                    model.rotation.z += -deg2rad(q_slider.value);
-                    model.rotation.y += -deg2rad(r_slider.value);
-                    // Attitude angular rate control
-                    plane_pivot.rotation.x += deg2rad(phi_d_slider.value);
-                    plane_pivot.rotation.z += deg2rad(theta_d_slider.value);
-                    plane_pivot.rotation.y += -deg2rad(psi_d_slider.value);
-
-                }
-            }
-            animate();
-		</script>
+        <script src="js/utils.js"></script>
+        <script src="js/init.js"></script>
+        <script src="js/stage.js"></script>
+        <script src="js/animate.js"></script>
 	</body>
 </html>

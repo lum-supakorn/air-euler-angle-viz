@@ -3,14 +3,14 @@ var options = {
         x: 0,
         y: 0,
         z: 0,
-        resetPos: function() {
-            this.x = 0;
-            this.y = 0;
-            this.z = 0;
-        },
         u: 0,
         v: 0,
         w: 0,
+        resetVel: function() {
+            this.u = 0;
+            this.v = 0;
+            this.w = 0;
+        },
     },
     angular: {
         phi: 0,
@@ -68,6 +68,7 @@ linearProp.add(
 linearProp.add(options.linear, 'u', -50, 50).name('\\(u\\)');
 linearProp.add(options.linear, 'v', -50, 50).name('\\(v\\)');
 linearProp.add(options.linear, 'w', -50, 50).name('\\(w\\)');
+linearProp.add(options.linear, 'resetVel').name('Reset velocity');
 linearProp.open();
 
 // Angular properties

@@ -20,5 +20,5 @@ var linearProp = gui.addFolder('Linear');
 linearProp.add(options.linear, 'x', -50, 50).name('\\(x\\)').listen();
 linearProp.add(options.linear, 'y', -50, 50).name('\\(y\\)').listen();
 linearProp.add(options.linear, 'z', -50, 50).name('\\(z\\)').listen();
+linearProp.add(options.linear, 'resetPos').name('reset position');
 linearProp.open();
-gui.add(options.linear, 'resetPos').name('reset position');

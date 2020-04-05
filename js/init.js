@@ -21,5 +21,5 @@ gridHelper.rotateX(Math.PI / 2); // NED
 scene.add( gridHelper );
 
 // Set up arrow helper
-var axesHelper = new THREE.AxesHelper(10);
+var axesHelper = new THREE.AxesHelper(5);
 scene.add( axesHelper );

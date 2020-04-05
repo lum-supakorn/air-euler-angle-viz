@@ -9,6 +9,12 @@ function animate() {
         plane.position.x = options.linear.x;
         plane.position.y = options.linear.y;
         plane.position.z = options.linear.z;
+
+        // Angular
+        // Attitude rates
+        planePivot.rotation.x += deg2rad(options.angular.phid);
+        planePivot.rotation.y += deg2rad(options.angular.thetad);
+        planePivot.rotation.z += deg2rad(options.angular.psid);
         // // Angle control
         // // plane_pivot.rotation.x = deg2rad(phi_slider.value);
         // // plane_pivot.rotation.z = deg2rad(theta_slider.value);

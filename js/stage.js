@@ -40,6 +40,6 @@ new THREE.MTLLoader( manager )
             plane = model;
             model.rotation.x = Math.PI;
             model.rotation.z = Math.PI;
-            scene.add( model );
+            planePivot.add( model );
         }, onProgress, onError );
 } );

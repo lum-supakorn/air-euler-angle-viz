@@ -46,7 +46,22 @@ var linearProp = gui.addFolder('Linear');
 linearProp.add(options.linear, 'x', -50, 50).name('\\(x\\)');
 linearProp.add(options.linear, 'y', -50, 50).name('\\(y\\)');
 linearProp.add(options.linear, 'z', -50, 50).name('\\(z\\)');
-linearProp.add(options.linear, 'resetPos').name('Reset position');
+linearProp.add(
+    { setPos:function(){ planePivot.position.set(
+        options.linear.x,
+        options.linear.y,
+        options.linear.z,
+    )}},
+    'setPos'
+).name('Set position');
+linearProp.add(
+    { resetPos:function(){ planePivot.position.set(
+        0,
+        0,
+        0,
+    )}},
+    'resetPos'
+).name('Reset position');
 linearProp.open();
 
 // Angular properties
@@ -55,18 +70,22 @@ var angularProp = gui.addFolder('Angular');
 angularProp.add(options.angular, 'phi', -180, 180, 0.5).name('\\(\\phi\\) {deg}');
 angularProp.add(options.angular, 'theta', -180, 180, 0.5).name('\\(\\theta\\) {deg}');
 angularProp.add(options.angular, 'psi', -180, 180, 0.5).name('\\(\\psi\\) {deg}');
-var obj = { setAtt:function(){ planePivot.rotation.set(
-    deg2rad(options.angular.phi),
-    deg2rad(options.angular.theta),
-    deg2rad(options.angular.psi),
-)}};
-angularProp.add(obj, 'setAtt').name('Set attitude');
-var obj = { resetAtt:function(){ planePivot.rotation.set(
-    0,
-    0,
-    0,
-)}};
-angularProp.add(obj, 'resetAtt').name('Reset attitude');
+angularProp.add(
+    { setAtt:function(){ planePivot.rotation.set(
+        deg2rad(options.angular.phi),
+        deg2rad(options.angular.theta),
+        deg2rad(options.angular.psi),
+    )}},
+    'setAtt'
+).name('Set attitude');
+angularProp.add(
+    { resetAtt:function(){ planePivot.rotation.set(
+        0,
+        0,
+        0,
+    )}},
+    'resetAtt'
+).name('Reset attitude');
 // Angular velocity
 angularProp.add(options.angular, 'phid', -90, 90, 0.5).name('\\(\\dot{\\phi}\\) {deg/s}');
 angularProp.add(options.angular, 'thetad', -90, 90, 0.5).name('\\(\\dot{\\theta}\\) {deg/s}');

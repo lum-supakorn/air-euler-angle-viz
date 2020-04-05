@@ -13,10 +13,12 @@ document.body.appendChild( renderer.domElement );
 var controls = new THREE.OrbitControls( camera, renderer.domElement );
 controls.update();
 
-// Set up grid helper
-let grid_helper = new THREE.GridHelper( 1200, 60, 0, 0x404040 );
-grid_helper.rotateX(Math.PI / 2); // NED
-scene.add( grid_helper );
+// // Set up grid helper
+// var size = 1200;
+// var divisions = 100;
+// var gridHelper = new THREE.GridHelper( size, divisions, 0, 0x404040 );
+// gridHelper.rotateX(Math.PI / 2); // NED
+// scene.add( gridHelper );
 
 // Set up arrow helper
 var axesHelper = new THREE.AxesHelper(10);

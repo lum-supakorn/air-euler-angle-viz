@@ -13,6 +13,9 @@ var options = {
         phid: 0,
         thetad: 0,
         psid: 0,
+        p: 0,
+        q: 0,
+        r: 0,
     }
 };
 
@@ -32,4 +35,7 @@ var angularProp = gui.addFolder('Angular');
 angularProp.add(options.angular, 'phid', -10, 10, 0.5).name('\\(\\dot{\\phi}\\)').listen();
 angularProp.add(options.angular, 'thetad', -10, 10, 0.5).name('\\(\\dot{\\theta}\\)').listen();
 angularProp.add(options.angular, 'psid', -10, 10, 0.5).name('\\(\\dot{\\psi}\\)').listen();
+angularProp.add(options.angular, 'p', -10, 10, 0.5).name('\\(p\\)').listen();
+angularProp.add(options.angular, 'q', -10, 10, 0.5).name('\\(q\\)').listen();
+angularProp.add(options.angular, 'r', -10, 10, 0.5).name('\\(r\\)').listen();
 angularProp.open();

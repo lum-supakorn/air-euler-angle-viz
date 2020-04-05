@@ -24,18 +24,6 @@ plane_pivot = new THREE.Group();
 origin_pt.add(plane_pivot)
 
 // Plane
-// var loader = new THREE.GLTFLoader();
-// var model;
-// loader.load( 'model/plane.gltf', function ( gltf ) {
-//     model = gltf.scene;
-//     model.rotation.x = -Math.PI/2; // Reset model
-//     // model.rotation.z = Math.PI; // Reset model
-//     plane_pivot.add( model );
-// }, undefined, function ( error ) {
-//     console.error( error );
-// } );
-
-// Plane
 var onProgress = function ( xhr ) {
     if ( xhr.lengthComputable ) {
         var percentComplete = xhr.loaded / xhr.total * 100;

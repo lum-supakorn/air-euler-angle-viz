@@ -1,9 +1,13 @@
+var clock = new THREE.Clock();
+var delta;
+
 function animate() {
     requestAnimationFrame( animate );
     renderer.render( scene, camera );
     controls.update();
 
     if (plane) {
+        delta = clock.getDelta();
         // Linear
         // Position
         plane.position.x = options.linear.x;
@@ -12,13 +16,13 @@ function animate() {
 
         // Angular
         // Attitude rates
-        planePivot.rotateOnWorldAxis(dirX, deg2rad(options.angular.phid));
-        planePivot.rotateOnWorldAxis(dirY, deg2rad(options.angular.thetad));
-        planePivot.rotateOnWorldAxis(dirZ, deg2rad(options.angular.psid));
+        planePivot.rotateOnWorldAxis(dirX, -deg2rad(options.angular.phid) * delta);
+        planePivot.rotateOnWorldAxis(dirY, deg2rad(options.angular.thetad) * delta);
+        planePivot.rotateOnWorldAxis(dirZ, -deg2rad(options.angular.psid) * delta);
         // Body rates
-        plane.rotation.x += deg2rad(options.angular.p);
-        plane.rotation.y += -deg2rad(options.angular.q);
-        plane.rotation.z += -deg2rad(options.angular.r);
+        plane.rotation.x += deg2rad(options.angular.p) * delta;
+        plane.rotation.y += -deg2rad(options.angular.q) * delta;
+        plane.rotation.z += -deg2rad(options.angular.r) * delta;
     }
 }
 

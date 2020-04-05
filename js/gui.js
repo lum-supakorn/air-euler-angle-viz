@@ -52,9 +52,9 @@ linearProp.open();
 // Angular properties
 var angularProp = gui.addFolder('Angular');
 // Attitude
-angularProp.add(options.angular, 'phi', -180, 180, 0.5).name('\\(\\phi\\)');
-angularProp.add(options.angular, 'theta', -180, 180, 0.5).name('\\(\\theta\\)');
-angularProp.add(options.angular, 'psi', -180, 180, 0.5).name('\\(\\psi\\)');
+angularProp.add(options.angular, 'phi', -180, 180, 0.5).name('\\(\\phi\\) {deg}');
+angularProp.add(options.angular, 'theta', -180, 180, 0.5).name('\\(\\theta\\) {deg}');
+angularProp.add(options.angular, 'psi', -180, 180, 0.5).name('\\(\\psi\\) {deg}');
 var obj = { add:function(){ planePivot.rotation.set(
     deg2rad(options.angular.phi),
     deg2rad(options.angular.theta),
@@ -62,12 +62,12 @@ var obj = { add:function(){ planePivot.rotation.set(
 )}};
 angularProp.add(obj, 'add').name('Set attitude');
 // Angular velocity
-angularProp.add(options.angular, 'phid', -10, 10, 0.5).name('\\(\\dot{\\phi}\\)');
-angularProp.add(options.angular, 'thetad', -10, 10, 0.5).name('\\(\\dot{\\theta}\\)');
-angularProp.add(options.angular, 'psid', -10, 10, 0.5).name('\\(\\dot{\\psi}\\)');
+angularProp.add(options.angular, 'phid', -90, 90, 0.5).name('\\(\\dot{\\phi}\\) {deg/s}');
+angularProp.add(options.angular, 'thetad', -90, 90, 0.5).name('\\(\\dot{\\theta}\\) {deg/s}');
+angularProp.add(options.angular, 'psid', -90, 90, 0.5).name('\\(\\dot{\\psi}\\) {deg/s}');
 angularProp.add(options.angular, 'resetAttRate').name('Reset attitude rate');
-angularProp.add(options.angular, 'p', -10, 10, 0.5).name('\\(p\\)');
-angularProp.add(options.angular, 'q', -10, 10, 0.5).name('\\(q\\)');
-angularProp.add(options.angular, 'r', -10, 10, 0.5).name('\\(r\\)');
+angularProp.add(options.angular, 'p', -90, 90, 0.5).name('\\(p\\) {deg/s}');
+angularProp.add(options.angular, 'q', -90, 90, 0.5).name('\\(q\\) {deg/s}');
+angularProp.add(options.angular, 'r', -90, 90, 0.5).name('\\(r\\) {deg/s}');
 angularProp.add(options.angular, 'resetBodyRate').name('Reset body rate');
 angularProp.open();

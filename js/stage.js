@@ -1,16 +1,7 @@
 // Light
 var light = new THREE.AmbientLight( 0xFFFFFF ); // soft white light
 scene.add( light );
-
 let ambientLight = new THREE.AmbientLight( 0x404040 );
-let directionalLight1 = new THREE.DirectionalLight( 0xC0C090 );
-let directionalLight2 = new THREE.DirectionalLight( 0xC0C090 );
-
-directionalLight1.position.set( -100, -50, 100 );
-directionalLight2.position.set( 100, 50, -100 );
-
-scene.add( directionalLight1 );
-scene.add( directionalLight2 );
 scene.add( ambientLight );
 
 // Origin point

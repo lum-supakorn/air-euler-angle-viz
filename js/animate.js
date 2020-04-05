@@ -17,8 +17,8 @@ function animate() {
         planePivot.rotation.z += deg2rad(options.angular.psid);
         // Body rates
         plane.rotation.x += deg2rad(options.angular.p);
-        plane.rotation.y += deg2rad(options.angular.q);
-        plane.rotation.z += deg2rad(options.angular.r);
+        plane.rotation.y += -deg2rad(options.angular.q);
+        plane.rotation.z += -deg2rad(options.angular.r);
     }
 }
 animate();

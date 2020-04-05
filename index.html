@@ -7,75 +7,6 @@
         <link rel="stylesheet" href="style.css">
 	</head>
 	<body>
-        <div id="control">
-            <!-- Position -->
-            <div class="group">Position</div>
-            <div class="parameter">
-                <label for="x_pos">\(x\)</label>
-                <input type="range" min="-100" max="100" value="0" class="slider" id="x_pos" oninput="x_pos_output.value = x_pos.value">
-                <output name="x_pos_name" id="x_pos_output">0</output>
-            </div>
-            <div class="parameter">
-                <label for="y_pos">\(y\)</label>
-                <input type="range" min="-100" max="100" value="0" class="slider" id="y_pos" oninput="y_pos_output.value = y_pos.value">
-                <output name="y_pos_name" id="y_pos_output">0</output>
-            </div>
-            <div class="parameter">
-                <label for="z_pos">\(z\)</label>
-                <input type="range" min="-100" max="100" value="0" class="slider" id="z_pos" oninput="z_pos_output.value = z_pos.value">
-                <output name="z_pos_name" id="z_pos_output">0</output>
-            </div>
-            <!-- Angle -->
-            <!-- <div class="parameter">
-                <label for="phi">\(\phi\)</label>
-                <input type="range" min="0" max="180" value="0" class="slider" id="phi" oninput="phi_output.value = phi.value">
-                <output name="phi_name" id="phi_output">0</output>
-            </div>
-            <div class="parameter">
-                <label for="theta">\(\theta\)</label>
-                <input type="range" min="0" max="180" value="0" class="slider" id="theta" oninput="theta_output.value = theta.value">
-                <output name="theta_name" id="theta_output">0</output>
-            </div>
-            <div class="parameter">
-                <label for="psi">\(\psi\)</label>
-                <input type="range" min="0" max="180" value="0" class="slider" id="psi" oninput="psi_output.value = psi.value">
-                <output name="psi_name" id="psi_output">0</output>
-            </div> -->
-            <!-- Attitude rate -->
-            <div class="group">Attitude rate</div>
-            <div class="parameter">
-                <label for="phi_d">\(\dot{\phi}\)</label>
-                <input type="range" min="0" max="30" value="0" class="slider" id="phi_d" oninput="phi_d_output.value = phi_d.value">
-                <output name="phi_d_name" id="phi_d_output">0</output>
-            </div>
-            <div class="parameter">
-                <label for="theta_d">\(\dot{\theta}\)</label>
-                <input type="range" min="0" max="30" value="0" class="slider" id="theta_d" oninput="theta_d_output.value = theta_d.value">
-                <output name="theta_d_name" id="theta_d_output">0</output>
-            </div>
-            <div class="parameter">
-                <label for="psi_d">\(\dot{\psi}\)</label>
-                <input type="range" min="0" max="30" value="0" class="slider" id="psi_d" oninput="psi_d_output.value = psi_d.value">
-                <output name="psi_d_name" id="psi_d_output">0</output>
-            </div>
-            <!-- Body angular rate -->
-            <div class="group">Body rate</div>
-            <div class="parameter">
-                <label for="p">\(p\)</label>
-                <input type="range" min="0" max="30" value="0" class="slider" id="p" oninput="p_output.value = p.value">
-                <output name="p_name" id="p_output">0</output>
-            </div>
-            <div class="parameter">
-                <label for="q">\(q\)</label>
-                <input type="range" min="0" max="30" value="0" class="slider" id="q" oninput="q_output.value = q.value">
-                <output name="q_name" id="q_output">0</output>
-            </div>
-            <div class="parameter">
-                <label for="r">\(r\)</label>
-                <input type="range" min="0" max="30" value="0" class="slider" id="r" oninput="r_output.value = r.value">
-                <output name="r_name" id="r_output">0</output>
-            </div>
-        </div>
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
         <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
         <script src="js/three.js"></script>
@@ -84,10 +15,13 @@
         <script src="js/MTLLoader.js"></script>
         <script src="js/DDSLoader.js"></script>
         <script src="js/OrbitControls.js"></script>
+        <script src="js/dat.gui.min.js"></script>
 
         <script src="js/utils.js"></script>
         <script src="js/init.js"></script>
         <script src="js/stage.js"></script>
         <script src="js/animate.js"></script>
+        <script src="js/gui.js"></script>
+
 	</body>
 </html>

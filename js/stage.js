@@ -27,7 +27,7 @@ var onError = function () { };
 var manager = new THREE.LoadingManager();
 manager.addHandler( /\.dds$/i, new THREE.DDSLoader() );
 
-var model;
+var plane;
 
 new THREE.MTLLoader( manager )
     .setPath( '../model/' )
@@ -37,6 +37,7 @@ new THREE.MTLLoader( manager )
         .setMaterials( materials )
         .setPath( '../model/' )
         .load( '14081_WWII_Plane-Germany_Focke-Wulf_FW_190_v1_l3.obj', function ( model ) {
+            plane = model;
             model.rotation.x = Math.PI;
             scene.add( model );
         }, onProgress, onError );

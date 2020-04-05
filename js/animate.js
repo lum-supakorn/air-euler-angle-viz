@@ -3,11 +3,12 @@ function animate() {
     renderer.render( scene, camera );
     controls.update();
 
-    if (model) {
-        // Position control
-        // model.rotation.z += 0.01;
-        // model.position.y = y_pos_slider.value;
-        // model.position.z = z_pos_slider.value;
+    if (plane) {
+        // Linear
+        // Position
+        plane.position.x = options.linear.x;
+        plane.position.y = options.linear.y;
+        plane.position.z = options.linear.z;
         // // Angle control
         // // plane_pivot.rotation.x = deg2rad(phi_slider.value);
         // // plane_pivot.rotation.z = deg2rad(theta_slider.value);

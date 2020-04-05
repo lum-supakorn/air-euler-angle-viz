@@ -16,12 +16,12 @@ scene.add( ambientLight );
 // Origin point
 var geometry = new THREE.SphereBufferGeometry( 0.2, 32, 32 );
 var material = new THREE.MeshBasicMaterial({ color: 0xFFFFFF });
-var origin_pt = new THREE.Mesh( geometry, material );
-scene.add( origin_pt );
+var originPoint = new THREE.Mesh( geometry, material );
+scene.add( originPoint );
 
 // Plane pivot
-plane_pivot = new THREE.Group();
-origin_pt.add(plane_pivot)
+planePivot = new THREE.Group();
+originPoint.add( planePivot )
 
 // Plane
 var onProgress = function ( xhr ) {

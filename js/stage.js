@@ -35,12 +35,12 @@ manager.addHandler( /\.dds$/i, new THREE.DDSLoader() );
 var plane;
 
 new THREE.MTLLoader( manager )
-    .setPath( '../model/' )
+    .setPath( '/model/' )
     .load( '14081_WWII_Plane-Germany_Focke-Wulf_FW_190_v1_l3.mtl', function ( materials ) {
     materials.preload();
     new THREE.OBJLoader( manager )
         .setMaterials( materials )
-        .setPath( '../model/' )
+        .setPath( '/model/' )
         .load( '14081_WWII_Plane-Germany_Focke-Wulf_FW_190_v1_l3.obj', function ( model ) {
             plane = model;
             model.rotation.x = Math.PI;

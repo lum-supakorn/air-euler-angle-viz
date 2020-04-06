@@ -36,7 +36,7 @@ var plane;
 
 new THREE.MTLLoader( manager )
     // .setPath( '../model/' )
-    .load( location.href + '/model/14081_WWII_Plane-Germany_Focke-Wulf_FW_190_v1_l3.mtl', function ( materials ) {
+    .load( location.href.substring(0, location.href.lastIndexOf('/') + 1) + '/model/14081_WWII_Plane-Germany_Focke-Wulf_FW_190_v1_l3.mtl', function ( materials ) {
     materials.preload();
     new THREE.OBJLoader( manager )
         .setMaterials( materials )

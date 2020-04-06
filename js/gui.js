@@ -65,9 +65,9 @@ linearProp.add(
     )}},
     'resetPos'
 ).name('Reset position');
-linearProp.add(options.linear, 'u', -50, 50).name('\\(u\\)');
-linearProp.add(options.linear, 'v', -50, 50).name('\\(v\\)');
-linearProp.add(options.linear, 'w', -50, 50).name('\\(w\\)');
+linearProp.add(options.linear, 'u', -50, 50).name('\\(u\\) {m/s}');
+linearProp.add(options.linear, 'v', -50, 50).name('\\(v\\) {m/s}');
+linearProp.add(options.linear, 'w', -50, 50).name('\\(w\\) {m/s}');
 linearProp.add(options.linear, 'resetVel').name('Reset velocity');
 linearProp.open();
 

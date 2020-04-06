@@ -41,7 +41,7 @@ new THREE.MTLLoader( manager )
     new THREE.OBJLoader( manager )
         .setMaterials( materials )
         // .setPath( '../model/' )
-        .load( location.href + '/model/14081_WWII_Plane-Germany_Focke-Wulf_FW_190_v1_l3.obj', function ( model ) {
+        .load( location.href.substring(0, location.href.lastIndexOf('/') + 1) + '/model/14081_WWII_Plane-Germany_Focke-Wulf_FW_190_v1_l3.obj', function ( model ) {
             plane = model;
             model.rotation.x = Math.PI;
             model.rotation.z = Math.PI;
